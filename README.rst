@@ -18,7 +18,7 @@ Installation
 ------------
 
 Requirements
-^^^^^^^^^^^^
+------------
 
 Compatibility
 -------------
