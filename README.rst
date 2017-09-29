@@ -30,3 +30,7 @@ Authors
 -------
 
 `jsonflatten` was written by `Tim Phillips <phillipstr@gmail.com>`_.
+
+Credits
+-------
+Brian Peterson `@bpeterso2000 <https://github.com/bpeterso2000>`_, creator of JSON Transformations `<https://github.com/json-transformations>`_
