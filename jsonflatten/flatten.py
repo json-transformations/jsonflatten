@@ -14,6 +14,9 @@ Todo:
     1.  flatten using slice operator (i.e. only partial arrays, etc.)
 """
 
+from collections import Sequence
+from collections import Mapping
+
 from jsoncut.core import get_items
 from jsoncut.tokenizer import SLICE_RE                     # may not need
 from jsoncut.treecrawler import find_keys
@@ -64,7 +67,7 @@ def flatten_by_keys(d, keys=None):
         content = get_key_content(d, key)
 
         # flatten each item in an array, as well.
-        if isinstance(content, list) and isinstance(content[0], dict):
+        if isinstance(content, Sequence) and isinstance(content[0], Mapping):
             flattened[key] = []
             array_content = get_items(d, [key], fullpath=True)
 
@@ -72,10 +75,10 @@ def flatten_by_keys(d, keys=None):
                 array_keys = find_keys(item)
                 flattened[key].append(flatten_by_keys(item, array_keys))
 
-        elif not isinstance(content, dict):
+        elif not isinstance(content, Mapping):
             flattened[key] = content
 
-        elif isinstance(content, dict):
+        elif isinstance(content, Mapping):
             flattened.update({'.'.join([key, k]): v for k, v in
                              flatten_by_keys(content).items()})
 
