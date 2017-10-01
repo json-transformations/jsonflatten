@@ -10,7 +10,7 @@ Functions:
     3.  generate_rows -> create rows of data from the json document for use
         as a dataframe or for other data analysis uses
 
-TODO:
+Todo:
     1.  flatten using slice operator (i.e. only partial arrays, etc.)
 """
 
@@ -19,17 +19,19 @@ from jsoncut.tokenizer import SLICE_RE                     # may not need
 from jsoncut.treecrawler import find_keys
 
 
-
 def flatten_all(d):
     """
     Flattens the entire json-serialized document in the jsoncut list format.
 
-    :param d: json-serialized document converted to a python dict.
-    :return: a flat dict with each key being in the jsoncut style.
+    Args:
+        d (dict): json-serialized document converted to a python dict.
+
+    Returns:
+        dict: flat dict with each key being in the jsoncut style.
 
     Example:
-    d = {'key1': 'item1', 'key2': {'key3': 'item3'}}
-    returns: {'key1': 'item1', 'key2.key3': 'item3'}
+        d = {'key1': 'item1', 'key2': {'key3': 'item3'}}
+        returns: {'key1': 'item1', 'key2.key3': 'item3'}
     """
     return flatten_by_keys(d)
 
@@ -41,15 +43,19 @@ def flatten_by_keys(d, keys=None):
     array is flattened, as well.  If the key is a root key with a dict as a
     value, then recursively flattens that branch.
 
-    :param d: json-serialized document converted to a python dict.
-    :param keys: singleton or list of jsoncut-style keys.  If not specified, or
-        set to None, the entire document is flattened.
-    :return: a dictionary with the flattened content.
+    Args:
+        d (dict): json-serialized document converted to a python dict.
+        keys (str or [str1, str2,...]): singleton or list of jsoncut-style
+            keys.  If not specified, or set to None, the entire document is
+            flattened.
+
+    Returs:
+        dict: dictionary with the flattened content.
 
     Example:
-    d = {'key1': 'item1', 'key2': {'key3': 'item3'}}
-    keys = ['key2.key3']
-    returns: {'key2.key3': 'item3'}
+        d = {'key1': 'item1', 'key2': {'key3': 'item3'}}
+        keys = ['key2.key3']
+        returns: {'key2.key3': 'item3'}
     """
     flattened = {}
     if keys is None:
@@ -82,20 +88,24 @@ def generate_rows(d, root_key, prepend_keys=None):
     the root_key, with the option to prepend columns.  Useful when waning to
     create dataframes, or rows to export to a CSV file for data analysis.
 
-    :param d: json-serialized document converted to a python dict.
-    :param root_key: jsoncut-style key that specifies the root where all data
-        is to be collected for the rows.
-    :param prepend_keys: optional list of jsoncut-style keys that will prepend
-        the data rows, such as data that is not part of the root_key data.
-    :return: generates a dict for each row
+    Args:
+        d (dict): json-serialized document converted to a python dict.
+        root_key (str): jsoncut-style key that specifies the root where all
+            data is to be collected for the rows.
+        prepend_keys (str): optional list of jsoncut-style keys that will
+            prepend the data rows, such as data that is not part of the
+            root_key data.
+
+    Yields:
+        dict: row of data
 
     Example:
-    d = {'key1': 'item1', 'key2': [{'date':'today'}, {'date': 'tomorrow'}]}
-    root_key = 'key2'
-    prepend_keys = ['key1']
-    yield:
-        {'key1':'item1', 'date': 'today'}
-        {'key1':'item1', 'date': 'tomorrow'}
+        d = {'key1': 'item1', 'key2': [{'date':'today'}, {'date': 'tomorrow'}]}
+        root_key = 'key2'
+        prepend_keys = ['key1']
+        yield:
+            {'key1':'item1', 'date': 'today'}
+            {'key1':'item1', 'date': 'tomorrow'}
     """
     # add prepended data if requested
     prepend_data = {}
@@ -113,20 +123,25 @@ def generate_rows(d, root_key, prepend_keys=None):
         yield row
 
 
-def get_key_content(source, key):
+def get_key_content(d, key):
     """
     Utility function that returns the content of a jsoncut-style key.
 
-    :param source: json-serialized document converted to a python dict.
-    :param key: a jsoncut style key.
-    :return: the value stored in the given key
-    :raises: jsoncut.exceptions.KeyNotFound via jsoncut.core.get_items()
+    Args:
+        d (dict): json-serialized document converted to a python dict.
+        key (str): a jsoncut style key.
+
+    Returns:
+        value: the value stored in the given key
+
+    Raises:
+        jsoncut.exceptions.KeyNotFound via jsoncut.core.get_items()
         if invalid key.
 
     Example:
-    source = {'key1': 'item1', 'key2': {'key3': 'item3'}}
-    key = 'key2.key3'
-    returns 'item3'
+        d = {'key1': 'item1', 'key2': {'key3': 'item3'}}
+        key = 'key2.key3'
+        returns 'item3'
     """
-    items = get_items(source, key.split('.'), fullpath=True)
+    items = get_items(d, key.split('.'), fullpath=True)
     return items[key]
