@@ -30,7 +30,7 @@ FORECAST = {
             'mph': 12,
             'direction': 'ENE',
         },
-    },{
+    }, {
         'day': 'Tuesday',
         'temp': {
             'hi': 82,
@@ -55,16 +55,16 @@ FORECAST_FLAT = {
     'sunspot_activity': None,
     'forecast': [{
         'day': 'Monday',
-        'temp.hi' : 80,
-        'temp.low' : 70,
-        'wind.mph' : 12,
-        'wind.direction' : 'ENE'
-        },{
+        'temp.hi': 80,
+        'temp.low': 70,
+        'wind.mph': 12,
+        'wind.direction': 'ENE'
+        }, {
         'day': 'Tuesday',
-        'temp.hi' : 82,
-        'temp.low' : 71,
-        'wind.mph' : 13,
-        'wind.direction' : 'S'
+        'temp.hi': 82,
+        'temp.low': 71,
+        'wind.mph': 13,
+        'wind.direction': 'S'
         },
     ]
 }
@@ -96,9 +96,10 @@ FORECAST_NODES_MAPPING = [
     Node(path='.sunscreen_required', obj=True),
     Node(path='.sunspot_activity', obj=None),
     Node(path='.coord', obj={'lat': 30.332, 'lon': -81.655}),
-    Node(path='.forecast', obj=[{'day': 'Monday', 'temp': {'hi': 80, 'low': 70},
-        'wind': {'mph': 12, 'direction': 'ENE'}}, {'day': 'Tuesday', 'temp':
-        {'hi': 82, 'low': 71}, 'wind': {'mph': 13, 'direction': 'S'}}]),
+    Node(path='.forecast', obj=[{'day': 'Monday', 'temp': {'hi': 80,
+         'low': 70}, 'wind': {'mph': 12, 'direction': 'ENE'}}, {'day':
+         'Tuesday', 'temp': {'hi': 82, 'low': 71}, 'wind': {'mph': 13,
+         'direction': 'S'}}]),
     ]
 
 FORECAST_NODES_SEQUENCE = [

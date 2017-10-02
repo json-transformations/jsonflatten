@@ -4,10 +4,10 @@ Test module for the jsoncut.flattener functions
 
 import pytest
 
-from jsonflatten.flatten import flatten_all
-from jsonflatten.flatten import flatten_by_keys
-from jsonflatten.flatten import generate_rows
-from jsonflatten.flatten import get_key_content
+from jsonflatten.core import flatten_all
+from jsonflatten.core import flatten_by_keys
+from jsonflatten.core import generate_rows
+from jsonflatten.core import get_key_content
 
 from jsoncut.exceptions import KeyNotFound
 
@@ -71,9 +71,9 @@ def test_flatten_by_keys_valIsList():
         non-dict values
     THEN assert it is flattened appropriately
     """
-    data = {'key1':'val1', 'key2':{'key3':[1, 2, 3]}}
+    data = {'key1': 'val1', 'key2': {'key3': [1, 2, 3]}}
     flattened = flatten_by_keys(data)
-    assert flattened == {'key1':'val1', 'key2.key3':[1, 2, 3]}
+    assert flattened == {'key1': 'val1', 'key2.key3': [1, 2, 3]}
 
 
 def test_flatten_by_keys_rootKey():
@@ -95,7 +95,7 @@ def test_generate_rows():
     THEN assert the rows are generated
     """
     row = generate_rows(FORECAST, 'forecast', ['city',
-        'coord.lat', 'coord.lon'])
+                        'coord.lat', 'coord.lon'])
     assert next(row) == FORECAST_ROWS[0]
     assert next(row) == FORECAST_ROWS[1]
 
@@ -126,13 +126,13 @@ def test_generate_rows_invalid_prependkey():
 ##############################################################################
 
 @pytest.mark.parametrize('key',
-    ['city',
-    'date',
-    'coord.lat',
-    'coord.lon',
-    'jacket_weather',
-    'sunscreen_required',
-    'sunspot_activity',])
+                         ['city',
+                          'date',
+                          'coord.lat',
+                          'coord.lon',
+                          'jacket_weather',
+                          'sunscreen_required',
+                          'sunspot_activity'])
 def test_get_content_validKey(key):
     """
     GIVEN a json-serialzed document converted to a python dict
