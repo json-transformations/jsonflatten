@@ -3,7 +3,7 @@ import re
 import setuptools
 from pip.req import parse_requirements
 
-install_reqs = parse_requirements('requirements.txt')
+install_reqs = parse_requirements('requirements.txt', session=False)
 reqs = [str(i.req) for i in install_reqs]
 
 _version_re = re.compile(r'__version__\s+=\s+(.*)')
@@ -11,7 +11,7 @@ with open('jsonflatten/__init__.py', 'rb') as f:
     version = str(ast.literal_eval(_version_re.search(
         f.read().decode('utf-8')).group(1)))
 
-with open('README.rst', 'r', 'utf-8') as f:
+with open('README.rst', 'r', encoding='utf-8') as f:
     readme = f.read()
 
 
