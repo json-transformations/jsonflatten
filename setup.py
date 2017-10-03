@@ -35,7 +35,7 @@ setup(
     description="A JSON flattening and dataframe generation tool.",
     long_description=readme,
 
-    packages=find_packages(include=[]),
+    packages=find_packages(include=['jsonflatten']),
     include_package_data=True,
     zipsafe=False,
 
