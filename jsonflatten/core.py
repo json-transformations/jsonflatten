@@ -69,7 +69,7 @@ def flatten_by_keys(d, keys=None):
         # flatten each item in an array, as well.
         if isinstance(content, Sequence) and isinstance(content[0], Mapping):
             flattened[key] = []
-            array_content = get_items(d, [key], fullpath=True)
+            array_content = get_items(d, [key], fullpath=True, any=False)
 
             for item in array_content[key]:
                 array_keys = find_keys(item)
@@ -116,7 +116,7 @@ def generate_rows(d, root_key, prepend_keys=None):
         prepend_data.update(flatten_by_keys(d, prepend_keys))
 
     # get the content and create individual rows
-    content_array = get_items(d, [root_key], fullpath=True)
+    content_array = get_items(d, [root_key], fullpath=True, any=False)
     for item in content_array[root_key]:
         row = {}
         row.update(prepend_data)
@@ -146,5 +146,5 @@ def get_key_content(d, key):
         key = 'key2.key3'
         returns 'item3'
     """
-    items = get_items(d, key.split('.'), fullpath=True)
+    items = get_items(d, key.split('.'), fullpath=True, any=False)
     return items[key]
