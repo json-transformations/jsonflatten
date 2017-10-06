@@ -30,6 +30,50 @@ def test_flatten_all():
     assert flattened == FORECAST_FLAT
 
 
+def test_flatten_all_nested_sequenceOfOneDict():
+    """
+    GIVEN a json-serialzed document converted to a python dict
+    WHEN the user requests to flatten the entire document with a nested
+        list of only one dict
+    THEN assert is it flattened and in the correct format
+    """
+    data = {'k1': {'k2': [{'k3': 'test'}]}}
+    assert flatten_all(data) == {'k1.k2':[{'k3':'test'}]}
+
+
+def test_flatten_all_nested_sequenceOfMultipleDicts():
+    """
+    GIVEN a json-serialzed document converted to a python dict
+    WHEN the user requests to flatten the entire document with a nested
+        list of multiple dicts
+    THEN assert is it flattened and in the correct format
+    """
+    data = {'k1': {'k2': [{'k3': 'test'}, {'k4': "TEST"}]}}
+    assert flatten_all(data) == {'k1.k2':[{'k3':'test'}, {'k4': "TEST"}]}
+
+
+def test_flatten_all_nested_sequenceOfOneNonDicts():
+    """
+    GIVEN a json-serialzed document converted to a python dict
+    WHEN the user requests to flatten the entire document with a nested
+        list of one non-dict item
+    THEN assert is it flattened and in the correct format
+    """
+    data = {'k1': {'k2': ['item1']}}
+    assert flatten_all(data) == {'k1.k2': ['item1']}
+
+
+def test_flatten_all_nested_sequenceOfMultNonDicts():
+    """
+    GIVEN a json-serialzed document converted to a python dict
+    WHEN the user requests to flatten the entire document with a nested
+        list of multiple non-dict items
+    THEN assert is it flattened and in the correct format
+    """
+    data = {'k1': {'k2': ['item1', 'item2']}}
+    assert flatten_all(data) == {'k1.k2': ['item1', 'item2']}
+
+
 ##############################################################################
 # TESTS flatten_by_keys
 ##############################################################################

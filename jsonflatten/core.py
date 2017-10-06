@@ -67,9 +67,12 @@ def flatten_by_keys(d, keys=None):
         content = get_key_content(d, key)
 
         # flatten each item in an array, as well.
-        if isinstance(content, Sequence) and isinstance(content[0], Mapping):
+        if (content and isinstance(content, Sequence) and
+            isinstance(content[0], Mapping) and len(content) > 1):
+
             flattened[key] = []
-            array_content = get_items(d, [key], fullpath=True, any=False)
+            array_content = get_items(d, key.split('.'), fullpath=True,
+                                      any=False)
 
             for item in array_content[key]:
                 array_keys = find_keys(item)
