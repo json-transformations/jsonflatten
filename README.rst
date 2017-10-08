@@ -312,17 +312,17 @@ Flatten Only Specific Keys
 .. code-block:: console
 
   $ cat forecast.json | jsoncut -l
-  1 city
-  2 city.coord
-  3 city.coord.lat
-  4 city.coord.lon
-  5 city.country
-  6 city.id
-  7 city.name
-  8 datetime
-  9 list
- 10 request_type
- 11 status
+   1 city
+   2 city.coord
+   3 city.coord.lat
+   4 city.coord.lon
+   5 city.country
+   6 city.id
+   7 city.name
+   8 datetime
+   9 list
+  10 request_type
+  11 status
 
 .. code-block:: console
 
