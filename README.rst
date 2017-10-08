@@ -38,12 +38,13 @@ Installation
 
 Usage
 -----
-* jsonflatten is meant to be used alongside `@jsoncut <https://github.com/json-transformations/jsoncut>`_.
+* jsonflatten is meant to be used alongside `jsoncut <https://github.com/json-transformations/jsoncut>`_.
 * Flatten the entire JSON document by not setting any command-line options.
 * Flatten specified keys in the JSON document using the -f option.
 
-Sample Data (forecast.json)
----------------------------
+Sample Data
+-----------
+* forecast.json - three day weather forecast API data
 .. code-block:: console
 
   {
@@ -337,7 +338,7 @@ Flatten Only Specific Keys
   $ cat forecast.json | jsonflatten -f7 -f9
   {
     "city.name": "Miami",
-   "list": [
+    "list": [
         {
             "date": "2017-09-09",
             "day.humidity_pct": 82,
@@ -445,4 +446,4 @@ Authors
 
 Credits
 -------
-Brian Peterson `@bpeterso2000 <https://github.com/bpeterso2000>`_, creator of JSON Transformations `<https://github.com/json-transformations>`_
+Brian Peterson `bpeterso2000 <https://github.com/bpeterso2000>`_, creator of JSON Transformations `<https://github.com/json-transformations>`_
