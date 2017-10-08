@@ -34,7 +34,7 @@ Installation
 ------------
 .. code-block:: console
 
-  $ git git+https://github.com/json-transformations/jsonflatten
+  $ pip install git+https://github.com/json-transformations/jsonflatten
 
 Usage
 -----
