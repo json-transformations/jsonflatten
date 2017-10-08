@@ -46,7 +46,7 @@ def get_results(data, kwds):
 @version_option(version='0.0', prog_name='JSON Flatten')
 @click.pass_context
 def main(ctx, **kwds):
-    """Specify which keys or whole document to flatten"""
+    """Specify which keys or whole document to flatten."""
     ctx.color = False if kwds['nocolor'] else True
     data = load_json(ctx, kwds['jsonfile'])
 
