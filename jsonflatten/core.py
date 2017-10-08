@@ -9,16 +9,12 @@ Functions:
     2.  flatten_by_keys -> only flatten user-specified keys
     3.  generate_rows -> create rows of data from the json document for use
         as a dataframe or for other data analysis uses
-
-Todo:
-    1.  flatten using slice operator (i.e. only partial arrays, etc.)
 """
 
 from collections import Sequence
 from collections import Mapping
 
 from jsoncut.core import get_items
-from jsoncut.tokenizer import SLICE_RE                     # may not need
 from jsoncut.treecrawler import find_keys
 
 
