@@ -1,5 +1,5 @@
 """
-Test module for the jsoncut.flattener functions
+Test module for the jsonflatten.core functions
 """
 
 import pytest
