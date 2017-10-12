@@ -1,6 +1,4 @@
-"""
-Sample data used in various testing modules
-"""
+"""Sample data used in various testing modules."""
 
 from jsoncut.treecrawler import Node
 
