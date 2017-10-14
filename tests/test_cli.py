@@ -78,11 +78,9 @@ def test_main_mapping(loadjson_mock):
 
     runner = CliRunner()
     result = runner.invoke(main, ['kwds'])
-    expected_output = ('{\n    "testfile.k1": "v1",\n'
-                       '    "testfile.k2": "v2"\n}\n')
+    expected_output = ['{\n', '"testfile.k1": "v1"', '"testfile.k2": "v2"\n}']
 
-    assert result.output == expected_output
-
+    assert all([item in result.output for item in expected_output])
 
 @patch('jsonflatten.cli.load_json')
 def test_main_sequence(loadjson_mock):
@@ -99,12 +97,10 @@ def test_main_sequence(loadjson_mock):
 
     runner = CliRunner()
     result = runner.invoke(main, ['kwds'])
-    expected_output = ('{\n    "testONE.k1": "v1",\n'
-                       '    "testONE.k2": "v2"\n}\n'
-                       '{\n    "testTWO.k3": "v3",\n'
-                       '    "testTWO.k4": "v4"\n}\n')
+    expected_output = ['{\n', '"testONE.k1": "v1"', '"testONE.k2": "v2"\n}',
+                       '"testTWO.k3": "v3"', '"testTWO.k4": "v4"\n}']
 
-    assert result.output == expected_output
+    assert all([item in result.output for item in expected_output])
 
 
 def test_main_no_jsonfile(monkeypatch):
