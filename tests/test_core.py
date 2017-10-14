@@ -1,6 +1,4 @@
-"""
-Test module for the jsonflatten.core functions
-"""
+"""Test module for the jsonflatten.core functions."""
 
 import pytest
 
@@ -38,7 +36,7 @@ def test_flatten_all_nested_sequenceOfOneDict():
     THEN assert is it flattened and in the correct format
     """
     data = {'k1': {'k2': [{'k3': 'test'}]}}
-    assert flatten_all(data) == {'k1.k2':[{'k3':'test'}]}
+    assert flatten_all(data) == {'k1.k2': [{'k3': 'test'}]}
 
 
 def test_flatten_all_nested_sequenceOfMultipleDicts():
@@ -48,8 +46,8 @@ def test_flatten_all_nested_sequenceOfMultipleDicts():
         list of multiple dicts
     THEN assert is it flattened and in the correct format
     """
-    data = {'k1': {'k2': [{'k3': 'test'}, {'k4': "TEST"}]}}
-    assert flatten_all(data) == {'k1.k2':[{'k3':'test'}, {'k4': "TEST"}]}
+    data = {'k1': {'k2': [{'k3': 'test'}, {'k4': 'TEST'}]}}
+    assert flatten_all(data) == {'k1.k2': [{'k3': 'test'}, {'k4': 'TEST'}]}
 
 
 def test_flatten_all_nested_sequenceOfOneNonDicts():
