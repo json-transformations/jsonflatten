@@ -1,5 +1,6 @@
 """Command-Line Interface."""
 
+import sys
 from collections import Mapping
 from collections import Sequence
 
@@ -23,7 +24,6 @@ def get_results(data, kwds):
         return flatten_by_keys(data, keys=None)
     else:
         args = ','.join(kwds['flatten'])
-
         data_ = Items([data] if kwds['slice_'] else data)
         keys = find_keys(data_.value, fullscan=True)
         keylists = parse_keystr(args, data.items, quotechar=kwds['quotechar'],
@@ -48,6 +48,12 @@ def get_results(data, kwds):
 def main(ctx, **kwds):
     """Specify which keys or whole document to flatten."""
     ctx.color = False if kwds['nocolor'] else True
+
+    if not kwds['jsonfile']:
+        click.echo(ctx.get_usage())
+        click.echo('Try `jsonflatten --help` for more information.')
+        sys.exit(0)
+
     data = load_json(ctx, kwds['jsonfile'])
 
     if isinstance(data, Mapping):
