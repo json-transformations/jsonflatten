@@ -5,6 +5,7 @@ from collections import Mapping
 from collections import Sequence
 
 import click
+import click._termui_impl
 from click import argument
 from click import option
 from click import version_option
@@ -50,9 +51,10 @@ def main(ctx, **kwds):
     ctx.color = False if kwds['nocolor'] else True
 
     if not kwds['jsonfile']:
-        click.echo(ctx.get_usage())
-        click.echo('Try `jsonflatten --help` for more information.')
-        sys.exit(0)
+        if click._termui_impl.isatty(sys.stdin):
+            click.echo(ctx.get_usage())
+            click.echo('Try `jsonflatten --help` for more information.')
+            sys.exit(0)
 
     data = load_json(ctx, kwds['jsonfile'])
 
@@ -64,7 +66,3 @@ def main(ctx, **kwds):
         results = [get_results(item, kwds) for item in data]
         for res in results:
             output(ctx, res, indent=4, is_json=True)
-
-
-if __name__ == '__main__':
-    main()

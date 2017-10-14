@@ -1,8 +1,11 @@
 """Test module for the jsonflatten.cli functions."""
 
+import sys
 from unittest.mock import patch
 
 import pytest
+
+import click._termui_impl
 from click import Context
 from click.testing import CliRunner
 
@@ -104,7 +107,7 @@ def test_main_sequence(loadjson_mock):
     assert result.output == expected_output
 
 
-def test_main_no_jsonfile():
+def test_main_no_jsonfile(monkeypatch):
     """
     GIVEN a call to jsonflatten
     WHEN no jsonfile is given
@@ -113,6 +116,8 @@ def test_main_no_jsonfile():
     kwds = {'jsonfile': None}
     ctx = Context(main, obj=Config())
     ctx.command.name = 'jsonflatten'
+
+    monkeypatch.setattr(click._termui_impl, 'isatty', lambda x: True)
 
     runner = CliRunner()
     result = runner.invoke(main)
