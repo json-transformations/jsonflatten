@@ -1,5 +1,5 @@
-jsonflatten
-===========
+JSON Flatten
+============
 
 .. image:: https://img.shields.io/pypi/v/jsonflatten.svg
     :target: https://pypi.python.org/pypi/jsonflatten

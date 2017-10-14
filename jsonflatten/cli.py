@@ -43,7 +43,7 @@ def get_results(data, kwds):
 @option('-q', '--quotechar', 'quotechar', default='"',
         help='Quote character used in serialized data, defaults to \'"\'')
 @option('-s', '--slice', 'slice_', is_flag=True, help='Disable sequencer')
-@version_option(version='0.0', prog_name='JSON Flatten')
+@version_option(version='0.1', prog_name='JSON Flatten')
 @click.pass_context
 def main(ctx, **kwds):
     """Specify which keys or whole document to flatten."""
