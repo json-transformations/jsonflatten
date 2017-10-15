@@ -82,6 +82,7 @@ def test_main_mapping(loadjson_mock):
 
     assert all([item in result.output for item in expected_output])
 
+
 @patch('jsonflatten.cli.load_json')
 def test_main_sequence(loadjson_mock):
     """

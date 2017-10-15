@@ -57,13 +57,13 @@ FORECAST_FLAT = {
         'temp.low': 70,
         'wind.mph': 12,
         'wind.direction': 'ENE'
-        }, {
+    }, {
         'day': 'Tuesday',
         'temp.hi': 82,
         'temp.low': 71,
         'wind.mph': 13,
         'wind.direction': 'S'
-        },
+    },
     ]
 }
 
@@ -97,12 +97,10 @@ FORECAST_NODES_MAPPING = [
     Node(path='.forecast', obj=[{'day': 'Monday', 'temp': {'hi': 80,
          'low': 70}, 'wind': {'mph': 12, 'direction': 'ENE'}}, {'day':
          'Tuesday', 'temp': {'hi': 82, 'low': 71}, 'wind': {'mph': 13,
-         'direction': 'S'}}]),
-    ]
+         'direction': 'S'}}])]
 
 FORECAST_NODES_SEQUENCE = [
     Node(path='.#', obj={'day': 'Monday', 'temp': {'hi': 80, 'low': 70},
         'wind': {'mph': 12, 'direction': 'ENE'}}),
     Node(path='.#', obj={'day': 'Tuesday', 'temp': {'hi': 82, 'low': 71},
-        'wind': {'mph': 13, 'direction': 'S'}}),
-    ]
+        'wind': {'mph': 13, 'direction': 'S'}})]
