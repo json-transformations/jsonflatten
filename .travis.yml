@@ -6,7 +6,7 @@ python:
   - "3.6"
 env:
   global:
-    - PYTHONPATH="/home/travis/build/json-transformations/jsonflatten/jsonflatten"
+    - PYTHONPATH="/home/travis/build/json-transformations/jsonflatten"
 install: "pip install jsoncut pytest-cov pytest-pep8 coveralls"
 script: py.test --cov=jsonflatten --pep8
 after_success:
