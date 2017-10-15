@@ -38,7 +38,7 @@ Installation
 
 Usage
 -----
-* **Python 3 support only**; *jsoncut is not currently supported under Python 2*.
+* **Python 3 support only**; *jsonflatten is not currently supported under Python 2*.
 * jsonflatten is meant to be used alongside `jsoncut <https://github.com/json-transformations/jsoncut>`_.
 * Flatten the entire JSON document by not setting any command-line options.
 * Flatten specified keys in the JSON document using the -f option.
