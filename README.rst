@@ -3,11 +3,13 @@ JSON Flatten
 
 .. image:: https://img.shields.io/pypi/v/jsonflatten.svg
     :target: https://pypi.python.org/pypi/jsonflatten
-    :alt: Latest PyPI version
 
 .. image:: https://travis-ci.org/json-transformations/jsonflatten.svg?branch=master
    :target: https://travis-ci.org/json-transformations/jsonflatten
-   :alt: Latest Travis CI build status
+
+.. image:: https://coveralls.io/repos/github/json-transformations/jsonflatten/badge.svg?branch=master
+   :target: https://coveralls.io/github/json-transformations/jsonflatten?branch=master
+
 
 A JSON document flattening tool
 
