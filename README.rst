@@ -10,6 +10,7 @@ JSON Flatten
    :alt: Latest Travis CI build status
 
 A JSON document flattening tool
+**Python 3 support only**; *jsoncut is not currently supported under Python 2*.
 
 .. code-block:: console
 

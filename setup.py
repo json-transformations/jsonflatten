@@ -11,7 +11,7 @@ with open('jsonflatten/__init__.py', 'rb') as f:
         f.read().decode('utf-8')).group(1)))
 
 # load README.rst
-with open('README.rst', 'r', encoding='utf-8') as f:
+with open('README.rst', 'r') as f:
     readme = f.read()
 
 # load requirements.txt
@@ -42,7 +42,6 @@ setup(
     classifiers=[
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 2'
         'Programming Language :: Python :: 3',
         'Topic :: Utilities',
     ],
