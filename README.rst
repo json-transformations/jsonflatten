@@ -34,7 +34,7 @@ Installation
 ------------
 .. code-block:: console
 
-  $ pip install git+https://github.com/json-transformations/jsonflatten
+  $ pip install jsonflatten
 
 Usage
 -----
@@ -42,10 +42,12 @@ Usage
 * jsonflatten is meant to be used alongside `jsoncut <https://github.com/json-transformations/jsoncut>`_.
 * Flatten the entire JSON document by not setting any command-line options.
 * Flatten specified keys in the JSON document using the -f option.
+* jsonflatten functions can also be imported into your own programs or scripts.
 
 Sample Data
 -----------
 * forecast.json - three day weather forecast API data
+
 .. code-block:: console
 
   {
