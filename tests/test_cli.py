@@ -78,7 +78,7 @@ def test_main_mapping(loadjson_mock):
 
     runner = CliRunner()
     result = runner.invoke(main, ['kwds'])
-    expected_output = ['{\n', '"testfile.k1": "v1"', '"testfile.k2": "v2"\n}']
+    expected_output = ['{\n', '"testfile.k1": "v1"', '"testfile.k2": "v2"', '}']
 
     assert all([item in result.output for item in expected_output])
 
@@ -98,8 +98,8 @@ def test_main_sequence(loadjson_mock):
 
     runner = CliRunner()
     result = runner.invoke(main, ['kwds'])
-    expected_output = ['{\n', '"testONE.k1": "v1"', '"testONE.k2": "v2"\n}',
-                       '"testTWO.k3": "v3"', '"testTWO.k4": "v4"\n}']
+    expected_output = ['{\n', '"testONE.k1": "v1"', '"testONE.k2": "v2"',
+                       '"testTWO.k3": "v3"', '"testTWO.k4": "v4"', '}']
 
     assert all([item in result.output for item in expected_output])
 
