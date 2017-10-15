@@ -5,8 +5,8 @@ JSON Flatten
     :target: https://pypi.python.org/pypi/jsonflatten
     :alt: Latest PyPI version
 
-.. image:: https://travis-ci.org/borntyping/cookiecutter-pypackage-minimal.png
-   :target: https://travis-ci.org/borntyping/cookiecutter-pypackage-minimal
+.. image:: https://travis-ci.org/json-transformations/jsonflatten.svg?branch=master
+   :target: https://travis-ci.org/json-transformations/jsonflatten
    :alt: Latest Travis CI build status
 
 A JSON document flattening tool
