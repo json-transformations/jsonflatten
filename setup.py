@@ -1,18 +1,23 @@
 import ast
 import re
+import sys
 from setuptools import setup, find_packages
 from pip.req import parse_requirements
 
 
-# get __version__ in __init__.py
+# get __version__ from __init__.py
 _version_re = re.compile(r'__version__\s+=\s+(.*)')
 with open('jsonflatten/__init__.py', 'rb') as f:
     version = str(ast.literal_eval(_version_re.search(
         f.read().decode('utf-8')).group(1)))
 
 # load README.rst
-with open('README.rst', 'r') as f:
-    readme = f.read()
+if sys.version[0] == '3':
+    with open('README.rst', 'r', encoding='utf-8') as f:
+        readme = f.read()
+else:
+    with open('README.rst', 'r') as f:
+        readme = f.read()
 
 # load requirements.txt
 requirements = parse_requirements('requirements.txt', session=False)
