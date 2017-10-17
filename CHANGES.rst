@@ -1,3 +1,7 @@
+0.3 **(In Development)**
+------------------------
+* CLI integration with other `json-transformations <https://github.com/json-transformations>`_
+
 0.2
 -----------------------
 Uploaded for use on PyPi.
