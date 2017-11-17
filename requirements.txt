@@ -1,2 +1,0 @@
-jsoncut
-click>=6.0

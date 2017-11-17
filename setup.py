@@ -2,7 +2,6 @@ import ast
 import re
 import sys
 from setuptools import setup, find_packages
-from pip.req import parse_requirements
 
 
 # get __version__ from __init__.py
@@ -18,14 +17,6 @@ if sys.version[0] == '3':
 else:
     with open('README.rst', 'r') as f:
         readme = f.read()
-
-# load requirements.txt
-requirements = parse_requirements('requirements.txt', session=False)
-reqs = [str(i.req) for i in requirements]
-
-# load requirements-dev.txt
-requirements_dev = parse_requirements('requirements-dev.txt', session=False)
-reqs_dev = [str(i.req) for i in requirements_dev]
 
 
 setup(
@@ -51,9 +42,18 @@ setup(
         'Topic :: Utilities',
     ],
 
-    install_requires=reqs,
+    install_requires=[
+        'jsoncut',
+        'click>=6.0',
+    ],
+
     test_suite='tests',
-    test_requires=reqs_dev,
+    test_requires=[
+        'pytest-cov',
+        'flake8',
+        'tox',
+    ],
+
     setup_requires=['pytest-runner'],
 
     entry_points={
